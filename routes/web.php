@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('/users', userController::class);
+Route::get('/users/{user}/changePassword', [userController::class, 'passwordForm']);
+Route::post('/users/{user}/changePassword', [userController::class, 'changePassword']);
