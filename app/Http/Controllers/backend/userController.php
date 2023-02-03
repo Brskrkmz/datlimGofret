@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\userRequest;
 use App\Models\User;
-
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class userController extends Controller
 {
@@ -18,7 +17,7 @@ class userController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
@@ -29,7 +28,7 @@ class userController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -39,10 +38,10 @@ class userController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\userRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param  userRequest  $request
+     * @return Redirect
      */
-    public function store(userRequest $request)
+    public function store(userRequest $request): RedirectResponse
     {    
         $user = new User();
 
@@ -69,7 +68,7 @@ class userController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  User $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)//birinci parametre (User) model adı, İkinci parametre ($user) route de id gönderilen kısma gelen segment yani /users/{user}/edit
     {
@@ -79,11 +78,11 @@ class userController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\userRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  userRequest  $request
+     * @param  User $user
+     * @return Redirect
      */
-    public function update(userRequest $request, User $user)
+    public function update(userRequest $request, User $user): RedirectResponse
     {
         $data = $this->prepare($request, $user->getFillable());
         $user->fill($data);
@@ -96,8 +95,8 @@ class userController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  User $user
-     * @return \Illuminate\Http\Response
+     * @param  User $user
+     * @return \Illuminate\Http\jsonResponse
      */
     public function destroy(User $user)
     {

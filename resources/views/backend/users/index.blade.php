@@ -16,6 +16,7 @@
       <th scope="col">Yetkili</th>
       <th scope="col">Durum</th>
       <th scope="col">İşlemler</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -58,6 +59,12 @@
                   <a href="{{ url("/users/$user->user_id/changePassword") }}" class="nav-link text-black">
                     <i class="fa fa-lock"></i>
                   <span>Şifre Değiştir</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url("/users/$user->user_id/adresses") }}" class="nav-link text-black">
+                    <i class="fa-thin fa-address-card"></i>
+                  <span>Adres</span>
                   </a>
                 </li>
               </ul>
