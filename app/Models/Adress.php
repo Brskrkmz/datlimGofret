@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adress extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $primaryKey = "adress_id";
+
+    protected $fillable = [
+        'adress_id' => 2,
+        'user_id',
+        'city',
+        'district',
+        'zipcode',
+        'adress', 
+        'is_default',
+    ];
 }

@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\User;
+
 return new class extends Migration
 {
     /**
@@ -14,7 +16,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('adresses', function (Blueprint $table) {
-            $table->id();
+            $table->id('adress_id');
+            $table->foreignIdFor(User::class);
+            $table->string("city");
+            $table->string("district");
+            $table->string("zipcode");
+            $table->string("adress");
+            $table->boolean("is_default");
             $table->timestamps();
         });
     }
