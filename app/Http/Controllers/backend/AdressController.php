@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\adressRequest;
-use App\Models\Adress;
+use App\Models\adress;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
@@ -25,7 +25,7 @@ class AdressController extends Controller
     public function index(User $user)
     {
         $addrs = $user->adress;
-        return view('backend.adresses.index',["addrs" => $addrs]);
+        return view('backend.adresses.index',["addrs" => $addrs, "user" => $user]);
     }
 
     /**
@@ -46,7 +46,7 @@ class AdressController extends Controller
      */
     public function store(User $user, adressRequest $request): RedirectResponse
     {
-        $addrs = new Adress();
+        $addrs = new adress();
 
         $data = $this->prepare($request, $addrs->getFillable());
         $addrs->fill($data);
@@ -63,9 +63,9 @@ class AdressController extends Controller
      * @param  User $user
      * @return View
      */
-    public function edit(User $user, Adress $adres): View
+    public function edit(User $user, adress $adress): View
     {
-        return view('backend.adresses.updateForm', ['user'=>$user, "addrs" => $adres]);
+        return view('backend.adresses.updateForm', ['user'=>$user, "adress" => $adress]);
     }
 
     /**
@@ -75,7 +75,7 @@ class AdressController extends Controller
      * @param  User $user
      * @return Redirect
      */
-    public function update(Request $request, User $user, Adress $addrs): RedirectResponse
+    public function update(Request $request, User $user, adress $addrs): RedirectResponse
     {
         $data = $this->prepare($request, $addrs->getFillable());
         $addrs->fill($data);
@@ -90,10 +90,10 @@ class AdressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Adress $addrs
+     * @param  adress $addrs
      * @return \Illuminate\Http\jsonResponse
      */
-    public function destroy(Adress $addrs)
+    public function destroy(adress $addrs)
     {
         $addrs->forceDelete();
         return Response()->json(["message"=>"Done", "id"=>$addrs->adress_id]);

@@ -1,8 +1,8 @@
 @extends('backend.shared.backendThema')
-@section('title', 'Kullanıcı Modülü')
-@section('subTitle', 'Kullanıcılar')
-@section('add_new_url', url("/users/create"))
-@section('btnText','Yeni Ekle')
+@section('title', 'Kullanıcı Adres Modülü')
+@section('subTitle', 'Adresler')
+@section('add_new_url', url("/users/$user->user_id/adress/create"))
+@section('btnText','Yeni Adres Ekle')
 @section('btnIcon','fa fa-plus')
 
 @section('content')
@@ -11,53 +11,42 @@
   <thead>
     <tr>
       <th scope="col">Sıra No</th>
-      <th scope="col">Ad Soyad</th>
-      <th scope="col">e-posta</th>
-      <th scope="col">Yetkili</th>
-      <th scope="col">Durum</th>
+      <th scope="col">Şehir</th>
+      <th scope="col">İlçe</th>
+      <th scope="col">Açık Adres</th>
+      <th scope="col">Posta Kodu</th>
       <th scope="col">İşlemler</th>
     </tr>
   </thead>
   <tbody>
-    @if (count($users) > 0)
-        @foreach ($users as $user)
-        <tr id="{{ $user->user_id }}">
+    @if (count($addrs) > 0)
+        @foreach ($addrs as $addr)
+        <tr id="{{ $addr->adress_id }}">
             <td scope="col">{{ $loop->iteration }}</td>
-            <td scope="col">{{ $user->name }}</td>
-            <td scope="col">{{ $user->email }}</td>
+            <td scope="col">{{ $addr->city }}</td>
+            <td scope="col">{{ $addr->district }}</td>
+            <td scope="col">{{ $addr->adress }}</td>
+            <td scope="col">{{ $addr->zipcode }}</td>
             <td scope="col">
-              @if ($user->is_admin == 1)
-              <span class="badge bg-success">Yetkili</span>
+              @if ($addr->is_default == 1)
+              <span class="badge bg-success">Evet</span>
               @else
-              <span class="badge bg-danger ">Yetkisiz</span>
-              @endif
-            </td>
-            <td scope="col">
-              @if ($user->is_active == 1)
-              <span class="badge bg-success">Aktif</span>
-              @else
-              <span class="badge bg-secondary ">Pasif</span>
+              <span class="badge bg-danger ">Hayır</span>
               @endif
             </td>
             <td scope="col">
               <ul class="nav float-start">
                 <li class="nav-item">
-                  <a href="{{ url("/users/$user->user_id/edit") }}" class="nav-link text-black">
+                  <a href="{{ url("/users/$user->user_id/adress/$addr->adress_id/edit") }}" class="nav-link text-black">
                     <i class="fa fa-edit"></i>
                   <span>Güncelle</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                {{-- href="{{ url("/users/$user->user_id") }}" --}}
-                  <a class="nav-link text-black list-item-delete" kullanici_id="{{ $user->user_id }}" href="{{ url("/users/$user->user_id") }}"> 
+                {{-- href="{{ url("/users/$addr->adress_id") }}" --}}
+                  <a class="nav-link text-black list-item-delete" kullanici_id="{{ $addr->adress_id }}" href="{{ url("/users/$user->user_id/adress/$addr->adress_id") }}"> 
                     <i class="fa fa-trash"></i>
                   <span>Sil</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ url("/users/$user->user_id/changePassword") }}" class="nav-link text-black">
-                    <i class="fa fa-lock"></i>
-                  <span>Şifre Değiştir</span>
                   </a>
                 </li>
               </ul>
@@ -66,8 +55,8 @@
         </tr>
     @else
     <tr>
-        <td colspan="5">
-          <p class="text-center" style="color:rgb(197, 113, 113); font-size:16px;">Herhangi bir kullanıcı kaydı bulunamadı.</p>
+        <td colspan="7">
+          <p class="text-center" style="color:rgb(197, 113, 113); font-size:16px;">Herhangi bir adres kaydı bulunamadı.</p>
         </td>
     </tr>
     @endif

@@ -73,7 +73,7 @@
         </tr>
     @else
     <tr>
-        <td colspan="5">
+        <td colspan="7">
           <p class="text-center" style="color:rgb(197, 113, 113); font-size:16px;">Herhangi bir kullanıcı kaydı bulunamadı.</p>
         </td>
     </tr>

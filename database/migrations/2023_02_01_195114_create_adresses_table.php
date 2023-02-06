@@ -17,12 +17,13 @@ return new class extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->id('adress_id');
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class, "user_id");
             $table->string("city");
             $table->string("district");
             $table->string("zipcode");
             $table->string("adress");
             $table->boolean("is_default");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

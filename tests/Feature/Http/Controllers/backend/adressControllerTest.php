@@ -67,6 +67,6 @@ class adressControllerTest extends TestCase
         $response = $this->delete('/users/2/adresses', $id);
         $response->assertOk();
         $response->assertJson(["message" => "Done", "id" => $id]);
-        $this->assertDeleted($enttity);
+        $this->assertSoftDeleted($enttity);
     }
 }
