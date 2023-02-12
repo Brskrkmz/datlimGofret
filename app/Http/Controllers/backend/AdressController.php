@@ -65,22 +65,24 @@ class AdressController extends Controller
      */
     public function edit(User $user, adress $adress): View
     {
-        return view('backend.adresses.updateForm', ['user'=>$user, "adress" => $adress]);
+        return view('backend.adresses.updateForm', ['user'=>$user, "addr" => $adress]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\adressRequest  $request,
      * @param  User $user
+     * @param  adress $addrsess
      * @return Redirect
      */
-    public function update(Request $request, User $user, adress $addrs): RedirectResponse
+    public function update(adressRequest $request, User $user): RedirectResponse
     {
-        $data = $this->prepare($request, $addrs->getFillable());
-        $addrs->fill($data);
+        $addrsess = adress::find($request->adress_id);
+        $data = $this->prepare($request, $addrsess->getFillable());
+        $addrsess->fill($data);
 
-        $addrs->save();
+        $addrsess->save();
 
         $this->editReturnUrl($user->user_id);
 

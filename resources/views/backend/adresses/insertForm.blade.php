@@ -11,38 +11,20 @@
   <input type="hidden" name="user_id" value="{{ $user->user_id }}">
   <div class="row" >
     <div class="col-12  mt-2">
-      <label for="city" class="form-label">Şehir</label>
-      <input type="text" class="col-log-6 form-control" id="city" name="city" placeholder="Şehir giriniz" value="{{ old("city") }}">
-      @error('name')
-          <span class="text-danger">{{ $message }}</span>
-      @enderror
+      <x-input type="text" label="Şehir" placeholder="Şehir giriniz" field="city" value="" />
     </div>
     <div class="col-12  mt-2">
-      <label for="district" class="form-label">İlçe</label>
-      <input type="text" class="form-control" id="district" name="district" placeholder="İlçe giriniz" value="{{ old("district") }}">
-      @error('district')
-          <span class="text-danger">{{ $message }}</span>
-      @enderror
+      <x-input type="text" label="İlçe" placeholder="İlçe giriniz" field="district" value="" />
     </div>
     <div class="col-12  mt-2">
-      <label for="zipcode" class="col-sm-2 col-form-label">Posta Kodu</label>
-      <input type="text" class="form-control" id="zipcode" name="zipcode" value="{{ old("zipcode") }}">
-      @error('zipcode')
-          <span class="text-danger">{{ $message }}</span>
-      @enderror
+      <x-input type="text" label="Posta Kodu" placeholder="Posta kodu giriniz" field="zipcode" value="" />
     </div>
     <div class="col-12  mt-2">
-      <label for="adress" class="col-sm-2 col-form-label">Açık Adres</label>
-      <textarea name="adress" class="form-control" id="adress" cols="100" rows="5">{{ old("adress") }}</textarea>
-      @error('adress')
-      <span class="text-danger">{{ $message }}</span>
-  @enderror
+      <x-textarea value="" placeholder="Açık adres giriniz" label="Adres" field="adress" />
+      
     </div>
     <div class="col-10 mt-3 ml-1">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="is_default" name="is_default" value="1">
-      <label class="form-check-label" for="is_default">Varsayılan</label>
-    </div>
+      <x-checkbox label="Varsayılan" field="is_default" checked="" />
   </div><br/>
   <div class="col-6 mt-2">
     <button type="submit" class="btn btn-primary mb-3">KAYDET</button>

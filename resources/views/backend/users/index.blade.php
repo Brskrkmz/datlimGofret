@@ -62,7 +62,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ url("/users/$user->user_id/adresses") }}" class="nav-link text-black">
+                  <a href="{{ url("/users/$user->user_id/adress") }}" class="nav-link text-black">
                     <i class="fa-thin fa-address-card"></i>
                   <span>Adres</span>
                   </a>
