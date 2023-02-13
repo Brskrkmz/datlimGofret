@@ -2,15 +2,16 @@
 
 namespace App\View\Components;
 
+use Faker\Core\Number;
 use Illuminate\View\Component;
 
 class Checkbox extends Component
 {
     private string $label;
     private string $field;
-    private bool $checked;
+    private string $checked;
 
-    public function __construct(string $label, string $field, bool $checked = false){
+    public function __construct(string $label, string $field, string $checked = "0"){
         $this->label = $label;
         $this->field = $field;
         $this->checked = $checked;

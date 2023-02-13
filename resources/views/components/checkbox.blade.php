@@ -3,6 +3,10 @@
             id="{{ $field }}" 
             name="{{ $field }}" 
             value="1"
-            {{ $checked ? "checked" : "" }}>
+                @if ($checked == 1)
+                checked
+                @else
+                    nc
+                @endif>
     <label class="form-check-label" for="{{ $field }}">{{ $label }}</label>
   </div>
