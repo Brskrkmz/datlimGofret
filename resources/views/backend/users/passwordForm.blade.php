@@ -10,15 +10,10 @@
   @csrf
 
     <div class="col-log-6">
-      <label for="sifre" class="col-sm-2 col-form-label">Şifre Giriniz</label>
-      <input type="password" class="form-control" id="sifre" name="sifre">
-      @error('sifre')
-          <span class="text-danger">{{ $message }}</span>
-      @enderror
+      <x-input type="password" label="Şifre Giriniz" placeholder="Şifre Giriniz" field="password" />
     </div>
     <div class="col-log-6">
-      <label for="sifre_confirmed" class="col-sm-2 col-form-label">Şifre Tekrar Giriniz</label>
-      <input type="password" class="form-control" id="sifre_confirmed" name="sifre_confirmation">
+      <x-input type="password" label="Şifre Tekrarı" placeholder="Şifre Tekrar Giriniz" field="password_confirmed" />
     </div>
     
   </div>

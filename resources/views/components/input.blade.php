@@ -6,7 +6,7 @@
             name="{{ $field }}" 
             placeholder="{{ $placeholder }}" 
             value="{{ old( $field, $value ) }}" />
-    @error('{{ $field }}')
+    @error($field)
         <span class="text-danger">{{ $message }}</span>
     @enderror
   

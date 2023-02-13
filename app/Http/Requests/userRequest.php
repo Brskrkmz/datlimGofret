@@ -36,9 +36,9 @@ class userRequest extends FormRequest
         return [
             "name.required"=>"İsim alanı zorunludur.",
             "name.min"=>"İsim alanı en az 2 karakterden oluşur.",
-            "mail.unique"=>"Girdiğiniz mail adresi sistemde kayıtlıdır.",
-            "mail.email"=>"Lütfen geçerli bir mail adresi giriniz.",
-            "mail.required"=>"Mail alanı zorunludur.",
+            "email.unique"=>"Girdiğiniz mail adresi sistemde kayıtlıdır.",
+            "email.email"=>"Lütfen geçerli bir mail adresi giriniz.",
+            "email.required"=>"Mail alanı zorunludur.",
             "password.required"=>"Şifre alanı zorunludur.",
             "password.min"=>"Şifreniz en az 8 karakterden oluşmalıdır.",
             "password.confirmed"=>"Girdiğiniz şifreler aynı değil.",
