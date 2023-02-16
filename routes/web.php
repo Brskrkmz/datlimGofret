@@ -23,4 +23,4 @@ Route::resource('/users', userController::class);
 Route::get('/users/{user}/changePassword', [userController::class, 'passwordForm']);
 Route::post('/users/{user}/changePassword', [userController::class, 'changePassword']);
 Route::resource('/users/{user}/adress', AdressController::class);
-Route::resource('/categries', categoryController::class);
+Route::resource('/categories', categoryController::class);
