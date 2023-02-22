@@ -6,7 +6,7 @@
 @section('btnIcon','fa fa-plus')
 
 @section('content')
-<table class="table table-striped table-sm">
+<table class="table table-striped table-sm table-hover table-responsive">
 
   <thead>
     <tr>
@@ -15,6 +15,7 @@
       <th scope="col">İlçe</th>
       <th scope="col">Açık Adres</th>
       <th scope="col">Posta Kodu</th>
+      <th scope="col">Durum</th>
       <th scope="col">İşlemler</th>
     </tr>
   </thead>
@@ -22,19 +23,19 @@
     @if (count($addrs) > 0)
         @foreach ($addrs as $addr)
         <tr id="{{ $addr->adress_id }}">
-            <td scope="col">{{ $loop->iteration }}</td>
-            <td scope="col">{{ $addr->city }}</td>
-            <td scope="col">{{ $addr->district }}</td>
-            <td scope="col">{{ $addr->adress }}</td>
-            <td scope="col">{{ $addr->zipcode }}</td>
-            <td scope="col">
+            <td scope="col"><center>{{ $loop->iteration }}</center></td>
+            <td scope="col"><center>{{ $addr->city }}</center></td>
+            <td scope="col"><center>{{ $addr->district }}</center></td>
+            <td scope="col"><center>{{ $addr->adress }}</center></td>
+            <td scope="col"><center>{{ $addr->zipcode }}</center></td>
+            <td scope="col"><center>
               @if ($addr->is_default == 1)
               <span class="badge bg-success">Evet</span>
               @else
               <span class="badge bg-danger ">Hayır</span>
               @endif
-            </td>
-            <td scope="col">
+            </center></td>
+            <td scope="col" style="padding-left: 4%">
               <ul class="nav float-start">
                 <li class="nav-item">
                   <a href="{{ url("/users/$user->user_id/adress/$addr->adress_id/edit") }}" class="nav-link text-black">

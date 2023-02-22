@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Dashboard Users Page</title>    
+    <title>Kullanıcı Yönetim Paneli</title>    
 
     <!-- choose one -->
 <script src="https://unpkg.com/feather-icons"></script>

@@ -7,6 +7,7 @@ use App\Http\Requests\categoryRequest;
 use App\Models\category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
@@ -47,6 +48,7 @@ class categoryController extends Controller
         $category = new category();
 
         $data = $this->prepare($request, $category->getFillable());
+        $category->slug = Str::slug($request->name);
         $category->fill($data);
         $category->save();
 

@@ -6,41 +6,40 @@
 @section('btnIcon','fa fa-plus')
 
 @section('content')
-<table class="table table-striped table-sm">
+<table class="table table-striped table-sm table-hover">
 
   <thead>
-    <tr>
+    <tr >
       <th scope="col">Sıra No</th>
       <th scope="col">Ad Soyad</th>
       <th scope="col">e-posta</th>
       <th scope="col">Yetkili</th>
       <th scope="col">Durum</th>
       <th scope="col">İşlemler</th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     @if (count($users) > 0)
         @foreach ($users as $user)
         <tr id="{{ $user->user_id }}">
-            <td scope="col">{{ $loop->iteration }}</td>
-            <td scope="col">{{ $user->name }}</td>
-            <td scope="col">{{ $user->email }}</td>
-            <td scope="col">
+            <td scope="col"><center> {{ $loop->iteration }} </center></td>
+            <td scope="col"><center> {{ $user->name }} </center></td>
+            <td scope="col"><center> {{ $user->email }} </center></td>
+            <td scope="col"><center> 
               @if ($user->is_admin == 1)
               <span class="badge bg-success">Yetkili</span>
               @else
               <span class="badge bg-danger ">Yetkisiz</span>
               @endif
-            </td>
-            <td scope="col">
+            </center></td>
+            <td scope="col"><center> 
               @if ($user->is_active == 1)
               <span class="badge bg-success">Aktif</span>
               @else
               <span class="badge bg-secondary ">Pasif</span>
               @endif
-            </td>
-            <td scope="col">
+            </center></td>
+            <td scope="col" style="padding-left: 8% "> <center>
               <ul class="nav float-start">
                 <li class="nav-item">
                   <a href="{{ url("/users/$user->user_id/edit") }}" class="nav-link text-black">
@@ -68,12 +67,12 @@
                   </a>
                 </li>
               </ul>
-            </td>
+            </center></td>
+          </tr>
         @endforeach
-        </tr>
     @else
     <tr>
-        <td colspan="7">
+        <td colspan="6">
           <p class="text-center" style="color:rgb(197, 113, 113); font-size:16px;">Herhangi bir kullanıcı kaydı bulunamadı.</p>
         </td>
     </tr>
