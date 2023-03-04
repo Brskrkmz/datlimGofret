@@ -50,6 +50,12 @@
                   <span>Sil</span>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ url("/productImages/$product->product_id/images") }}" class="nav-link text-black">
+                    <i class="fa fa-image"></i>
+                  <span>Fotoğraflar</span>
+                  </a>
+                </li>
               </ul>
             </center></td>
           </tr>

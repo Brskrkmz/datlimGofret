@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\category;
+use App\Models\productImage;
 
 class product extends Model
 {
@@ -27,5 +28,26 @@ class product extends Model
     ];
     public function category(){
         return $this->hasOne(category::class, "category_id", "category_id");
+    }
+    public function images(){
+        return $this->hasMany(productImage::class, "product_id", "product_id");
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getFillable()
+    {
+        return $this->fillable;
+    }
+
+    /**
+     * @param mixed $fillable 
+     * @return self
+     */
+    public function setFillable($fillable): self
+    {
+        $this->fillable = $fillable;
+        return $this;
     }
 }
