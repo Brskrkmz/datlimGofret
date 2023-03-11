@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class cart extends Model
+class order extends Model
 {
-    use HasFactory, SoftDeletes;
-    protected $primaryKey ='cart_id';
+    use HasFactory;
+    protected $primaryKey = "order_id";
+
     protected $fillable = [
+        'order_id',
         'cart_id',
-        'user_id',
         'code'
     ];
 }
+?>
