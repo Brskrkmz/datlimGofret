@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\frontend\homeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\userController;
 use App\Http\Controllers\backend\AdressController;
@@ -28,3 +29,4 @@ Route::resource('/users/{user}/adress', AdressController::class);
 Route::resource('/productImages/{product}/images', productImageController::class);
 Route::resource('/categories', categoryController::class);
 Route::resource('/products', productController::class);
+Route::get('/',[homeController::class,'index']);
