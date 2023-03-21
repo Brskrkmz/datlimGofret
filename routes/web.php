@@ -19,9 +19,7 @@ use App\Http\Controllers\backend\productController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::resource('/users', userController::class);
 Route::get('/users/{user}/changePassword', [userController::class, 'passwordForm']);
 Route::post('/users/{user}/changePassword', [userController::class, 'changePassword']);
@@ -29,4 +27,8 @@ Route::resource('/users/{user}/adress', AdressController::class);
 Route::resource('/productImages/{product}/images', productImageController::class);
 Route::resource('/categories', categoryController::class);
 Route::resource('/products', productController::class);
+
 Route::get('/',[homeController::class,'index']);
+Route::get('kategori/{category:slug}', [categoryController::class, 'index']);
+
+?>
