@@ -26,11 +26,11 @@ class product extends Model
         "slug",
         "is_active",
     ];
-    public function category(){
-        return $this->hasOne(category::class, "category_id", "category_id");
-    }
     public function images(){
         return $this->hasMany(productImage::class, "product_id", "product_id");
+    }
+    public function category(){
+        return $this->hasOne(category::class, "category_id", "category_id");
     }
     
     /**
@@ -51,3 +51,4 @@ class product extends Model
         return $this;
     }
 }
+?>

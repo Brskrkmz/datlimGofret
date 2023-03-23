@@ -29,7 +29,7 @@ class productImageRequest extends FormRequest
         return [
             "product_id" => "required",
             "alt" => "required",
-            "image_url" => "required|image|mimes:jpg,jpeg,png|sometimes",
+            "image_url" => "required|image|mimes:jpg,jpeg,png,webp|sometimes",
         ];
     }
     public function messages(){
