@@ -18,7 +18,12 @@ use App\Http\Controllers\backend\productController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 //BACKEND
+=======
+
+
+>>>>>>> 0180af236c9aaa13919bd9a36c9cdc7dc621b329
 Route::resource('/users', userController::class);
 Route::get('/users/{user}/changePassword', [userController::class, 'passwordForm']);
 Route::post('/users/{user}/changePassword', [userController::class, 'changePassword']);
@@ -27,6 +32,13 @@ Route::resource('/productImages/{product}/images', productImageController::class
 Route::resource('/categories', categoryController::class);
 Route::resource('/products', productController::class);
 
+<<<<<<< HEAD
 //FRONTEND
 Route::get('/',[homeController::class,'index']);
 Route::get('/kategori/{categorySlug?}',[homeController::class,'index']);
+=======
+Route::get('/',[homeController::class,'index']);
+Route::get('kategori/{category:slug}', [categoryController::class, 'index']);
+
+?>
+>>>>>>> 0180af236c9aaa13919bd9a36c9cdc7dc621b329

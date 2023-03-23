@@ -21,9 +21,9 @@ class categoryController extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index(category $category)
     {
-        $categories = category::all();
+        $categories = category::all()->where('is_active', true);
         return view('backend.categories.index',["categories" => $categories]);
     }
 
