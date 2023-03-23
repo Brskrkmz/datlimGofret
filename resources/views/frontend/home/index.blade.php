@@ -14,34 +14,55 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('build/assets/app-37892e52.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
+               
+                  <nav class="navbar navbar-default navbar-fixed-left">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Gofret Gofret</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Anasayfa</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in">Giriş Yap</span></a></li>
+                      </ul>
+                    </div>
+                  </nav>
+        
         <div class="row">
-            <div class="col-sm-12">
-                <strong>burası ana menü</strong>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <strong>Kategoriler</strong>
-                @if (count($categories) > 0)
+            <div class="col-sm-3 pt-4">
+                <h5>Kategoriler</h5>
+                <div class="list-group">
+                    @if (count($categories) > 0)
+                    <a href="/" class="list-group-item list-group-item-action" style="background-color: rgb(255, 249, 255)">Tüm Ürünler</a>
                     @foreach ($categories as $category)
-                        <ul>
-                            <li><a href="/kategori/{{ $category->slug }}">{{ $category->name }}</a></li>
-                        </ul>
+                        <a href="/kategori/{{ $category->slug }}" class="list-group-item list-group-item-action">{{ $category->name }}</a>
                     @endforeach
                 @endif
             </div>
-            <div class="col-sm-3">
-                <strong>Ürünler</strong>
+            </div>
+            <div class="col-sm-9 pt-4">
+                <h5>Ürünler</h5>
                 @if (count($products) > 0)
+                <div class="card-group">
                     @foreach ($products as $product)
-                        <ul>
-                            <li>{{ $product->name }}</li>
-                        </ul>
+                    <div class="card" style="width:25%; height:360px;">
+                        <img src="{{ asset("storage/public/productImages/".$product->images[0]->image_url) }}" class="card-img-top" alt="{{ $product->images[0]->alt }}" style="width: 12rem;"/>
+                        <div class="card-body">
+                          <h5 class="card-title">{{ $product->name }}</h5>
+                          <p class="card-text">{{ $product->lead }}</p>
+                          <a href="{{ "sparis-ver/$product->product_id" }}" class="btn btn-primary">Spariş Ver</a>
+                        </div>
+                      </div>
                     @endforeach
+                </div>
                 @endif
             </div>
         </div>
