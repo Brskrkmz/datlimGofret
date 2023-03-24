@@ -14,13 +14,8 @@ class homeController extends Controller
     
     public function index($categorySlug = ""):View
     {
-        if (Str::of($categorySlug)->isNotEmpty()) {
-            $selectCategory = category::all()->where("is_active", true)->where("slug", $categorySlug)->first();
-            $products = $selectCategory->product;
-        }else{
-            $products = product::all()->where("is_active", true);
-        }
-        $categories = category::all()->where("is_active", true);
+        $products = product::all()->where('is_active', true);
+        $categories = category::all()->where('is_active', true);
         return view('frontend.home.index',['categories' => $categories, "products" => $products]);
     }
 }
