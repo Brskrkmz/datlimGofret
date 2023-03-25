@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\frontend\homeController;
+use App\Http\Controllers\frontend\authController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\userController;
 use App\Http\Controllers\backend\AdressController;
@@ -37,8 +38,11 @@ Route::get('kategori/{category:slug}', [\App\Http\Controllers\frontend\categoryC
 
 //LOGIN
 Route::get("/giris", [authController::class, "sinInForm"]);
-Route::post("/giris", [authController::class, "sinIn"]);
+Route::post("/giris", [authController::class, "signIn"]);
 
-Route::get("/uye-ol", [authController::class, "sinUpForm"]);
-Route::post("/uye-ol", [authController::class, "sinUp"]);
+Route::post("/cikis", [authController::class, "logOut"]);
+Route::post("/hesabim", [\App\Http\Controllers\frontend\userController::class, "index"]);
+
+Route::get("/uye-ol", [authController::class, "signUpForm"]);
+Route::post("/uye-ol", [authController::class, "signUp"]);
 ?>

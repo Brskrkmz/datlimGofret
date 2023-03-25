@@ -11,7 +11,7 @@ class authController extends Controller
     {
         return view("frontend.auth.singIn_form");
     }
-    public function sinIn(sinInRequest $request)
+    public function signIn(sinInRequest $request)
     {
         $credentials = $request->only(["email", "password"]);
         $rememberMe = $request->get("remember-me", false);
@@ -25,12 +25,27 @@ class authController extends Controller
             ]);
         }
     }
-    public function sinUpForm()
+    public function signUpForm()
     {
-        return view("frontend.auth.singUp_form");
+        return view("frontend.auth.signUp_form");
     }
-    public function sinUp()
+    public function signUp()
     {
-        
+        $user = new user;
+
+        $data = $this->prepare($request, $user->getFillable());
+        $data["is_active"] = true;
+        $user->fill($data);
+        $user->save();
+
+        return Redirect::to('/giris');
+    }
+    public function logOut()
+    {
+        Auth::logOut();
+        return redirect("/");
     }
 }
+
+
+?>

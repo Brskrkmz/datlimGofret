@@ -30,9 +30,22 @@
                       <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Anasayfa</a></li>
                       </ul>
+                      @auth
                       <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in">Giriş Yap</span></a></li>
+                        <li><a href="/hesabim"><span class="glyphicon glyphicon-log-in">Hesabım</span></a></li>
                       </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/cikis"><span class="glyphicon glyphicon-log-in">Çıkış</span></a></li>
+                      </ul>
+                        @else
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="giris"><span class="glyphicon glyphicon-log-in">Giriş Yap</span></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="/uye-ol"><span class="glyphicon glyphicon-log-in">Uye Ol</span></a></li>
+                        </ul>
+                      @endauth
+                      
                     </div>
                   </nav>
         
