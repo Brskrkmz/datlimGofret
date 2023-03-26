@@ -9,9 +9,9 @@ class authController extends Controller
 {
     public function sinInForm():View
     {
-        return view("frontend.auth.singIn_form");
+        return view("frontend.auth.signIn_form");
     }
-    public function signIn(sinInRequest $request)
+    public function signIn(signInRequest $request)
     {
         $credentials = $request->only(["email", "password"]);
         $rememberMe = $request->get("remember-me", false);
@@ -29,7 +29,7 @@ class authController extends Controller
     {
         return view("frontend.auth.signUp_form");
     }
-    public function signUp()
+    public function signUp(signUpRequest $request)
     {
         $user = new user;
 
